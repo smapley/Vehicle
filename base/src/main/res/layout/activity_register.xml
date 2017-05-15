@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@mipmap/login_bg"
+    android:clipToPadding="true"
+    android:fitsSystemWindows="true">
+
+
+    <com.smapley.base.widget.LinearlayoutView
+        android:id="@+id/register_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="@dimen/login_age"
+        android:layout_marginRight="@dimen/login_age"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/register_logo"
+            android:layout_width="150dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="80dp"
+            android:src="@mipmap/login_logo" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="60dp"
+            android:background="@mipmap/login_form_bg"
+            android:orientation="vertical"
+            android:padding="20dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/register_register"
+                    android:textColor="@color/black"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <LinearLayout style="@style/login_item_layout">
+
+                <ImageView
+                    android:layout_width="@dimen/login_icon"
+                    android:layout_height="@dimen/login_icon"
+                    android:src="@mipmap/login_phone" />
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="@dimen/login_icon"
+                    android:src="@mipmap/icon_line_vertical" />
+
+                <EditText
+                    android:id="@+id/register_phone"
+                    style="@style/login_edit"
+                    android:hint="@string/login_phone"
+                    android:inputType="phone" />
+
+            </LinearLayout>
+
+            <LinearLayout style="@style/login_item_layout">
+
+                <ImageView
+                    android:layout_width="@dimen/login_icon"
+                    android:layout_height="@dimen/login_icon"
+                    android:src="@mipmap/register_code" />
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="@dimen/login_icon"
+                    android:src="@mipmap/icon_line_vertical" />
+
+                <EditText
+                    android:id="@+id/register_code"
+                    style="@style/login_edit"
+                    android:hint="@string/register_code"
+                    android:inputType="number" />
+
+                <TextView
+                    android:id="@+id/register_getCode"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:background="@mipmap/register_code_bg"
+                    android:gravity="center"
+                    android:padding="10dp"
+                    android:text="@string/register_getCode"
+                    android:textColor="@color/gray4"
+                    android:textSize="@dimen/login_text" />
+            </LinearLayout>
+
+
+            <LinearLayout style="@style/login_item_layout">
+
+                <ImageView
+                    android:layout_width="@dimen/login_icon"
+                    android:layout_height="@dimen/login_icon"
+                    android:src="@mipmap/login_pass" />
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="@dimen/login_icon"
+                    android:src="@mipmap/icon_line_vertical" />
+
+                <EditText
+                    android:id="@+id/register_password"
+                    style="@style/login_edit"
+                    android:hint="@string/login_pass"
+                    android:inputType="textPassword" />
+
+                <ImageView
+                    android:id="@+id/register_show"
+                    android:layout_width="@dimen/login_icon"
+                    android:layout_height="@dimen/login_icon"
+                    android:src="@mipmap/login_pass_close" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/register_login"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="@dimen/login_space"
+                android:text="@string/register_login"
+                android:textColor="@color/cyan6"
+                android:textSize="@dimen/login_text" />
+
+
+            <Button
+                android:id="@+id/register"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_marginTop="@dimen/login_space"
+                android:background="@mipmap/login_bt_bg"
+                android:text="@string/register"
+                android:textColor="@color/white"
+                android:textSize="@dimen/login_text" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="20dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/login_agree"
+                    android:textColor="@color/gray4" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/login_agreement"
+                    android:textColor="@color/blue4" />
+            </LinearLayout>
+        </LinearLayout>
+    </com.smapley.base.widget.LinearlayoutView>
+</LinearLayout>

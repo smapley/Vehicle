@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="small">12sp</dimen>
+    <dimen name="big">24sp</dimen>
+    <dimen name="titleSize">18sp</dimen>
+
+
+    <dimen name="lgoin_left">30dp</dimen>
+    <dimen name="login_age">10dp</dimen>
+    <dimen name="login_icon">20dp</dimen>
+    <dimen name="login_icon_xlarge">40dp</dimen>
+    <dimen name="login_text">15sp</dimen>
+    <dimen name="login_text_xlarge">25sp</dimen>
+    <dimen name="login_space">20dp</dimen>
+    <dimen name="login_space_xlarge">40dp</dimen>
+
+
+</resources>

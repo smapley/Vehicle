@@ -1,0 +1,36 @@
+<resources>
+    <string name="login_phone">请输入手机号</string>
+    <string name="login_pass">请输入密码</string>
+    <string name="login_forget">忘记密码</string>
+    <string name="login_register">立即注册</string>
+
+
+    <string name="register_code">请输入验证码</string>
+    <string name="register_getCode">获取验证码</string>
+    <string name="register_login">已有账号？去登陆</string>
+
+
+
+    <string name="forget_pass">请输入新密码</string>
+    <string name="forget">找回密码</string>
+
+
+    <string name="confirm">确定</string>
+    <string name="tools">工具</string>
+    <string name="main">首页</string>
+    <string name="send">发送</string>
+    <string name="accept">接收</string>
+    <string name="share">分享</string>
+    <string name="delete">删除</string>
+    <string name="app_name">Base</string>
+    <string name="commit">提交</string>
+    <string name="logout">退出登录</string>
+    <string name="login">登录</string>
+    <string name="register">注册</string>
+    <string name="login_agree">登录后代表您已同意车速通</string>
+    <string name="login_agreement">《使用协议》</string>
+    <string name="login_login">登录车速通</string>
+    <string name="register_register">注册车速通</string>
+
+
+</resources>

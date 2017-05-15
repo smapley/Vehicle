@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="login_item_layout">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">50dp</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:paddingLeft">20dp</item>
+        <item name="android:paddingRight">20dp</item>
+        <item name="android:background">@mipmap/login_edit_bg</item>
+        <item name="android:layout_marginTop">@dimen/login_space</item>
+        <item name="android:orientation">horizontal</item>
+        <item name="android:maxWidth">500dp</item>
+    </style>
+
+
+
+    <style name="login_edit">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">@null</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textColorHint">@color/gray4</item>
+        <item name="android:textSize">@dimen/login_text</item>
+    </style>
+
+    <style name="forget_item_layout" parent="login_item_layout">
+        <item name="android:background">@mipmap/forget_edit_bg</item>
+    </style>
+
+    <style name="forget_edit" parent="login_edit">
+        <item name="android:textColor">@color/gray8</item>
+        <item name="android:textColorHint">@color/gray4</item>
+    </style>
+</resources>

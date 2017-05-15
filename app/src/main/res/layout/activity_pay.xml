@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@mipmap/pay_bg">
+
+    <include layout="@layout/actionbar" />
+
+    <ListView
+        android:id="@+id/pay_listview"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+    </ListView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="10dp">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@mipmap/pay_et_bg">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginStart="5dp"
+                android:padding="2dp"
+                android:text="￥"
+                android:textSize="20sp"
+                android:textColor="@color/white"/>
+
+            <EditText
+                android:id="@+id/pay_number"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="5dp"
+                android:inputType="number"
+                android:background="@null"
+                android:textColor="@color/white"
+                android:textColorHint="@color/gray4"
+                android:hint="@string/pay_input" />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/pay_confirm"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginStart="10dp"
+            android:background="@mipmap/pay_bt_bg"
+            android:padding="2dp"
+            android:text="@string/confirm"
+            android:textColor="@color/white" />
+    </LinearLayout>
+
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="15dp">
+
+        <TableRow>
+
+            <LinearLayout style="@style/pay_key_layou">
+                <TextView
+                    android:id="@+id/pay_key1"
+                    android:text="3"
+                    style="@style/pay_key_item" />
+            </LinearLayout>
+
+            <LinearLayout style="@style/pay_key_layou">
+                <TextView
+                    android:id="@+id/pay_key2"
+                    android:text="4"
+                    style="@style/pay_key_item" />
+            </LinearLayout>
+
+            <LinearLayout style="@style/pay_key_layou">
+                <TextView
+                    android:id="@+id/pay_key3"
+                    android:text="5"
+                    style="@style/pay_key_item" />
+            </LinearLayout>
+
+        </TableRow>
+        <TableRow
+            android:layout_marginTop="10dp">
+
+            <LinearLayout style="@style/pay_key_layou">
+                <TextView
+                    android:id="@+id/pay_key4"
+                    android:text="6"
+                    style="@style/pay_key_item" />
+            </LinearLayout>
+
+            <LinearLayout style="@style/pay_key_layou">
+                <TextView
+                    android:id="@+id/pay_key5"
+                    android:text="7"
+                    style="@style/pay_key_item" />
+            </LinearLayout>
+
+            <LinearLayout style="@style/pay_key_layou">
+                <TextView
+                    android:id="@+id/pay_key6"
+                    android:text="8"
+                    style="@style/pay_key_item" />
+            </LinearLayout>
+
+        </TableRow>
+        <TableRow
+            android:layout_marginTop="10dp">
+
+            <LinearLayout style="@style/pay_key_layou">
+                <TextView
+                    android:id="@+id/pay_key7"
+                    android:text="9"
+                    style="@style/pay_key_item" />
+            </LinearLayout>
+
+            <LinearLayout style="@style/pay_key_layou">
+                <TextView
+                    android:id="@+id/pay_key8"
+                    android:text="10"
+                    style="@style/pay_key_item" />
+            </LinearLayout>
+
+            <LinearLayout style="@style/pay_key_layou">
+                <TextView
+                    android:id="@+id/pay_key9"
+                    android:text="12"
+                    style="@style/pay_key_item" />
+            </LinearLayout>
+
+        </TableRow>
+    </TableLayout>
+
+
+</LinearLayout>

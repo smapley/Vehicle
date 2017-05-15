@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#000</color>
+    <color name="white">#fff</color>
+    <color name="base">#000</color>
+
+    <color name="red0">#FFEBEE</color>
+    <color name="red1">#FFCDD2</color>
+    <color name="red2">#EF9A9A</color>
+    <color name="red3">#E57373</color>
+    <color name="red4">#EF5350</color>
+    <color name="red5">#F44336</color>
+    <color name="red6">#E53935</color>
+    <color name="red7">#D32F2F</color>
+    <color name="red8">#C62828</color>
+    <color name="red9">#B71C1C</color>
+
+    <color name="pink0">#FCE4EC</color>
+    <color name="pink1">#F8BBD0</color>
+    <color name="pink2">#F48FB1</color>
+    <color name="pink3">#F06292</color>
+    <color name="pink4">#EC407A</color>
+    <color name="pink5">#E91E63</color>
+    <color name="pink6">#D81B60</color>
+    <color name="pink7">#C2185B</color>
+    <color name="pink8">#AD1457</color>
+    <color name="pink9">#880E4F</color>
+
+    <color name="purple0">#F3E5F5</color>
+    <color name="purple1">#E1BEE7</color>
+    <color name="purple2">#CE93D8</color>
+    <color name="purple3">#BA68C8</color>
+    <color name="purple4">#AB47BC</color>
+    <color name="purple5">#9C27B0</color>
+    <color name="purple6">#8E24AA</color>
+    <color name="purple7">#7B1FA2</color>
+    <color name="purple8">#6A1B9A</color>
+    <color name="purple9">#4A148C</color>
+
+    <color name="deep_purple0">#EDE7F6</color>
+    <color name="deep_purple1">#D1C4E9</color>
+    <color name="deep_purple2">#B39DDB</color>
+    <color name="deep_purple3">#9575CD</color>
+    <color name="deep_purple4">#7E57C2</color>
+    <color name="deep_purple5">#673AB7</color>
+    <color name="deep_purple6">#5E35B1</color>
+    <color name="deep_purple7">#512DA8</color>
+    <color name="deep_purple8">#4527A0</color>
+    <color name="deep_purple9">#311B92</color>
+
+    <color name="indigo0">#E8EAF6</color>
+    <color name="indigo1">#C5CAE9</color>
+    <color name="indigo2">#9FA8DA</color>
+    <color name="indigo3">#7986CB</color>
+    <color name="indigo4">#5C6BC0</color>
+    <color name="indigo5">#3F51B5</color>
+    <color name="indigo6">#3949AB</color>
+    <color name="indigo7">#303F9F</color>
+    <color name="indigo8">#283593</color>
+    <color name="indigo9">#1A237E</color>
+
+
+    <color name="blue0">#E3F2FD</color>
+    <color name="blue1">#BBDEFB</color>
+    <color name="blue2">#90CAF9</color>
+    <color name="blue3">#64B5F6</color>
+    <color name="blue4">#42A5F5</color>
+    <color name="blue5">#2196F3</color>
+    <color name="blue6">#1E88E5</color>
+    <color name="blue7">#1976D2</color>
+    <color name="blue8">#1565C0</color>
+    <color name="blue9">#0D47A1</color>
+
+    <color name="light_blue0">#E1F5FE</color>
+    <color name="light_blue1">#B3E5FC</color>
+    <color name="light_blue2">#81D4FA</color>
+    <color name="light_blue3">#4FC3F7</color>
+    <color name="light_blue4">#29B6F6</color>
+    <color name="light_blue5">#03A9F4</color>
+    <color name="light_blue6">#039BE5</color>
+    <color name="light_blue7">#0288D1</color>
+    <color name="light_blue8">#0277BD</color>
+    <color name="light_blue9">#01579B</color>
+
+    <color name="cyan0">#E0F7FA</color>
+    <color name="cyan1">#B2EBF2</color>
+    <color name="cyan2">#80DEEA</color>
+    <color name="cyan3">#4DD0E1</color>
+    <color name="cyan4">#26C6DA</color>
+    <color name="cyan5">#00BCD4</color>
+    <color name="cyan6">#00ACC1</color>
+    <color name="cyan7">#0097A7</color>
+    <color name="cyan8">#00838F</color>
+    <color name="cyan9">#006064</color>
+
+    <color name="teal0">#E0F2F1</color>
+    <color name="teal1">#B2DFDB</color>
+    <color name="teal2">#80CBC4</color>
+    <color name="teal3">#4DB6AC</color>
+    <color name="teal4">#26A69A</color>
+    <color name="teal5">#009688</color>
+    <color name="teal6">#00897B</color>
+    <color name="teal7">#00796B</color>
+    <color name="teal8">#00695C</color>
+    <color name="teal9">#004D40</color>
+
+    <color name="green0">#E8F5E9</color>
+    <color name="green1">#C8E6C9</color>
+    <color name="green2">#A5D6A7</color>
+    <color name="green3">#81C784</color>
+    <color name="green4">#66BB6A</color>
+    <color name="green5">#4CAF50</color>
+    <color name="green6">#43A047</color>
+    <color name="green7">#388E3C</color>
+    <color name="green8">#2E7D32</color>
+    <color name="green9">#1B5E20</color>
+
+    <color name="light_green0">#F1F8E9</color>
+    <color name="light_green1">#DCEDC8</color>
+    <color name="light_green2">#C5E1A5</color>
+    <color name="light_green3">#AED581</color>
+    <color name="light_green4">#9CCC65</color>
+    <color name="light_green5">#8BC34A</color>
+    <color name="light_green6">#7CB342</color>
+    <color name="light_green7">#689F38</color>
+    <color name="light_green8">#558B2F</color>
+    <color name="light_green9">#33691E</color>
+
+    <color name="lime0">#F9FBE7</color>
+    <color name="lime1">#F0F4C3</color>
+    <color name="lime2">#E6EE9C</color>
+    <color name="lime3">#DCE775</color>
+    <color name="lime4">#D4E157</color>
+    <color name="lime5">#CDDC39</color>
+    <color name="lime6">#C0CA33</color>
+    <color name="lime7">#AFB42B</color>
+    <color name="lime8">#9E9D24</color>
+    <color name="lime9">#827717</color>
+
+    <color name="yellow0">#FFFDE7</color>
+    <color name="yellow1">#FFF9C4</color>
+    <color name="yellow2">#FFF59D</color>
+    <color name="yellow3">#FFF176</color>
+    <color name="yellow4">#FFEE58</color>
+    <color name="yellow5">#FFEB3B</color>
+    <color name="yellow6">#FDD835</color>
+    <color name="yellow7">#FBC02D</color>
+    <color name="yellow8">#F9A825</color>
+    <color name="yellow9">#F57F17</color>
+
+    <color name="orange0">#FFF3E0</color>
+    <color name="orange1">#FFE0B2</color>
+    <color name="orange2">#FFCC80</color>
+    <color name="orange3">#FFB74D</color>
+    <color name="orange4">#FFA726</color>
+    <color name="orange5">#FF9800</color>
+    <color name="orange6">#FB8C00</color>
+    <color name="orange7">#F57C00</color>
+    <color name="orange8">#EF6C00</color>
+    <color name="orange9">#E65100</color>
+
+    <color name="deep_orange0">#FBE9E7</color>
+    <color name="deep_orange1">#FFCCBC</color>
+    <color name="deep_orange2">#FFAB91</color>
+    <color name="deep_orange3">#FF8A65</color>
+    <color name="deep_orange4">#FF7043</color>
+    <color name="deep_orange5">#FF5722</color>
+    <color name="deep_orange6">#F4511E</color>
+    <color name="deep_orange7">#E64A19</color>
+    <color name="deep_orange8">#D84315</color>
+    <color name="deep_orange9">#BF360C</color>
+
+    <color name="brown0">#EFEBE9</color>
+    <color name="brown1">#D7CCC8</color>
+    <color name="brown2">#BCAAA4</color>
+    <color name="brown3">#A1887F</color>
+    <color name="brown4">#8D6E63</color>
+    <color name="brown5">#795548</color>
+    <color name="brown6">#6D4C41</color>
+    <color name="brown7">#5D4037</color>
+    <color name="brown8">#4E342E</color>
+    <color name="brown9">#3E2723</color>
+
+    <color name="gray0">#fafafa</color>
+    <color name="gray1">#f5f5f5</color>
+    <color name="gray2">#eeeeee</color>
+    <color name="gray3">#e0e0e0</color>
+    <color name="gray4">#bdbdbd</color>
+    <color name="gray5">#9e9e9e</color>
+    <color name="gray6">#757575</color>
+    <color name="gray7">#616161</color>
+    <color name="gray8">#424242</color>
+    <color name="gray9">#212121</color>
+
+    <color name="bule_grey0">#ECEFF1</color>
+    <color name="bule_grey1">#CFD8DC</color>
+    <color name="bule_grey2">#B0BEC5</color>
+    <color name="bule_grey3">#90A4AE</color>
+    <color name="bule_grey4">#78909C</color>
+    <color name="bule_grey5">#607D8B</color>
+    <color name="bule_grey6">#546E7A</color>
+    <color name="bule_grey7">#455A64</color>
+    <color name="bule_grey8">#37474F</color>
+    <color name="bule_grey9">#263238</color>
+    <color name="keybord">#5E5E71</color>
+</resources>

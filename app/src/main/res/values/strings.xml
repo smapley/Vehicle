@@ -1,0 +1,44 @@
+<resources>
+    <string name="app_name">车速通</string>
+
+
+    <string name="main_recharge">充值</string>
+    <string name="main_withdraw">提现</string>
+    <string name="main_record">常用记录</string>
+    <string name="main_detail">付款明细</string>
+
+    <string name="user_yue">我的余额</string>
+    <string name="withdraw_yue">可提现余额：</string>
+    <string name="withdraw_jine">金额</string>
+    <string name="withdraw_jine_tip">请输入提现金额（单位：元）</string>
+    <string name="withdraw_account">请输入收款人姓名</string>
+    <string name="withdraw_number">请输入平台账号/银行卡号</string>
+    <string name="withdraw">提现</string>
+    <string name="recharge_chose">请选择充值金额</string>
+    <string name="recharge_money">自定义充值金额</string>
+    <string name="recharge_input_jine">请输入充值金额</string>
+    <string name="withdraw_alipay">支付宝支付</string>
+    <string name="withdraw_wecharpay">微信支付</string>
+    <string name="recharge">充值</string>
+    <string name="detail">明细</string>
+    <string name="detail_number">编号</string>
+    <string name="pay">付款</string>
+    <string name="pay_input">请输入金额</string>
+    <string name="withdraw_history">历史提现</string>
+    <string name="withdraw_toast_name">请输入提现人姓名</string>
+    <string name="withdraw_toast_card">请输入提现账号</string>
+    <string name="withdraw_toast_money">请输入提现金额</string>
+    <string name="withdraw_toast_bank">请选择提现银行</string>
+    <string name="withdraw_code">输入验证码</string>
+    <string name="withdraw_toast_code">请输入验证码</string>
+    <string name="recharge_toast_num">请输入充值金额</string>
+    <string name="recharge_toast_success">充值成功</string>
+    <string name="recharge_toast_fail">充值失败</string>
+    <string name="recharge_toast_stop">充值取消</string>
+    <string name="location_permission">未开启定位权限！</string>
+    <string name="permission_bluetooth">请打开蓝牙权限</string>
+    <string name="pay_sj">请选择商家</string>
+    <string name="pay_number">请输入支付金额</string>
+    <string name="main_no_message">抱歉，您周边没有商家。</string>
+
+</resources>
