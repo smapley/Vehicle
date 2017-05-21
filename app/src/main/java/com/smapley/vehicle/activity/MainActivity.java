@@ -4,35 +4,33 @@ package com.smapley.vehicle.activity;
 import android.Manifest;
 import android.content.Intent;
 import android.net.Uri;
-import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
-import android.support.v4.content.ContextCompat;
-import android.support.v4.view.ViewCompat;
 import android.support.v4.view.ViewPager;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.clj.fastble.BleManager;
 import com.google.gson.Gson;
+import com.inuker.bluetooth.library.search.SearchRequest;
+import com.inuker.bluetooth.library.search.SearchResult;
+import com.inuker.bluetooth.library.search.response.SearchResponse;
+import com.inuker.bluetooth.library.utils.ByteUtils;
 import com.smapley.base.activity.BaseActivity;
 import com.smapley.base.adapter.MyFragmentAdapter;
 import com.smapley.base.http.BaseCallback;
+import com.smapley.base.utils.ClientManager;
 import com.smapley.base.utils.SP;
 import com.smapley.base.utils.ShakeManager;
-import com.smapley.base.utils.ThreadSleep;
 import com.smapley.base.widget.CircleImageView;
 import com.smapley.vehicle.R;
 import com.smapley.vehicle.fragment.DetailFragment;
 import com.smapley.vehicle.fragment.RecordFragment;
 import com.smapley.vehicle.http.MainResponse;
 import com.smapley.vehicle.http.Pay;
-import com.smapley.vehicle.utils.BluetoothUtils;
 import com.smapley.vehicle.utils.Constant;
 
 import org.apache.commons.lang3.StringUtils;
-import org.apache.commons.lang3.ThreadUtils;
 import org.xutils.http.RequestParams;
 import org.xutils.view.annotation.ContentView;
 import org.xutils.view.annotation.Event;
@@ -53,7 +51,7 @@ public class MainActivity extends BaseActivity {
     @ViewInject(R.id.main_gold)
     private TextView gold;
     @ViewInject(R.id.main_image)
-    private CircleImageView iamge;
+    private ImageView iamge;
 
     @ViewInject(R.id.main_viewPage)
     private ViewPager viewPager;
@@ -62,11 +60,9 @@ public class MainActivity extends BaseActivity {
     private DetailFragment detailFragment;
 
     private ShakeManager shakeManager;
-    private BluetoothUtils bluetoothUtils;
 
 
     private Map<String, String> map = new HashMap<>();
-    private ThreadSleep  blueThread = new ThreadSleep();
 
 
     @Override
@@ -110,37 +106,11 @@ public class MainActivity extends BaseActivity {
         initTab();
 
 
-        //加载蓝牙
-        bluetoothUtils = new BluetoothUtils(this, new BluetoothUtils.BlueToothCallback() {
-
-            @Override
-            public void before() {
-                map.clear();
-            }
-
-            @Override
-            public void onSearch(String mac, int rssi, String data) {
-                map.put(mac, mac + "," + rssi + "," + data);
-            }
-
-            @Override
-            public void onStop() {
-                blueThread.sleep(10000, new ThreadSleep.Callback() {
-                    @Override
-                    public void onCallback(int number) {
-                        if (rxPermissions.isGranted(Manifest.permission.ACCESS_COARSE_LOCATION)) {
-                            bluetoothUtils.start();
-                        }
-                    }
-                });
-            }
-        });
         //请求定位权限
         rxPermissions
                 .request(Manifest.permission.ACCESS_COARSE_LOCATION)
                 .subscribe(granted -> {
                     if (granted) { // Always true pre-M
-                        bluetoothUtils.start();
                     } else {
                     }
                 });
@@ -153,33 +123,57 @@ public class MainActivity extends BaseActivity {
             public void onShake() {
                 if (!rxPermissions.isGranted(Manifest.permission.ACCESS_COARSE_LOCATION)) {
                     showToast(R.string.location_permission);
-                }else{
-                    bluetoothUtils.start();
+                } else {
+                    searchDevice();
                 }
             }
 
             @Override
             public void endShake() {
-                try {
-                    if (!map.isEmpty()) {
-                        StringBuilder stringBuilder = new StringBuilder();
-                        for (String data : map.values()) {
-                            stringBuilder.append(data).append(",");
-                        }
-                        String mess = stringBuilder.toString();
-                        if (!StringUtils.isEmpty(mess)) {
-                            mess = mess.substring(0, mess.length() - 1);
-                            upData(mess, null);
-                        }
-                    }else {
-                        showToast(R.string.main_no_message);
-                    }
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
+
             }
         });
 
+    }
+
+    private void searchDevice() {
+        SearchRequest request = new SearchRequest.Builder()
+                .searchBluetoothLeDevice(1600).build();
+
+        ClientManager.getClient().search(request, new SearchResponse() {
+            @Override
+            public void onSearchStarted() {
+                map.clear();
+            }
+
+            @Override
+            public void onDeviceFounded(SearchResult device) {
+                map.put(device.getAddress(), device.getAddress() + "," + device.rssi + "," + ByteUtils.byteToString(device.scanRecord));
+            }
+
+            @Override
+            public void onSearchStopped() {
+                if (!map.isEmpty()) {
+                    StringBuilder stringBuilder = new StringBuilder();
+                    for (String data : map.values()) {
+                        Log.d("------------>>", data);
+                        stringBuilder.append(data).append(",");
+                    }
+                    String mess = stringBuilder.toString();
+                    if (!StringUtils.isEmpty(mess)) {
+                        mess = mess.substring(0, mess.length() - 1);
+                        upData(mess, null);
+                    }
+                } else {
+                    showToast(R.string.main_no_message);
+                }
+            }
+
+            @Override
+            public void onSearchCanceled() {
+                showToast(R.string.main_openBle);
+            }
+        });
     }
 
     private void initTab() {
@@ -212,45 +206,9 @@ public class MainActivity extends BaseActivity {
                     shakeManager.startShake();
                     break;
                 case R.id.main_image:
-                    selectPic();
+                    startActivity(new Intent(MainActivity.this, SetActivity.class));
                     break;
             }
-    }
-
-
-    /**
-     * 从相册选择头像
-     */
-    private void selectPic() {
-        int selectedMode = MultiImageSelectorActivity.MODE_SINGLE;
-        boolean showCamera = true;
-        int maxNum = 1;
-        Intent intent = new Intent(MainActivity.this, MultiImageSelectorActivity.class);
-        // 是否显示拍摄图片
-        intent.putExtra(MultiImageSelectorActivity.EXTRA_SHOW_CAMERA, showCamera);
-        // 最大可选择图片数量
-        intent.putExtra(MultiImageSelectorActivity.EXTRA_SELECT_COUNT, maxNum);
-        // 选择模式
-        intent.putExtra(MultiImageSelectorActivity.EXTRA_SELECT_MODE, selectedMode);
-        // 默认选择
-//                if (mSelectPath != null && mSelectPath.size() > 0) {
-//                    intent.putExtra(MultiImageSelectorActivity.EXTRA_DEFAULT_SELECTED_LIST, mSelectPath);
-//                }
-        startActivityForResult(intent, 0);
-    }
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        try {
-            if (resultCode == RESULT_OK && requestCode == 0) {
-                List<String> resultList = data.getStringArrayListExtra(MultiImageSelectorActivity.EXTRA_RESULT);
-                Uri uri = Uri.parse(resultList.get(0));
-                iamge.setImageURI(uri);
-            }
-        } catch (Exception e) {
-
-        }
     }
 
 
@@ -276,6 +234,7 @@ public class MainActivity extends BaseActivity {
             public void success(MainResponse result) {
                 gold.setText(result.getSygold());
                 recordFragment.setData(result.getLsfkdx());
+                x.image().bind(iamge, Constant.URL_IMG + result.getPic(), circleImage);
             }
         });
 
@@ -290,7 +249,7 @@ public class MainActivity extends BaseActivity {
 
     @Override
     protected void onDestroy() {
-        blueThread.stop();
         super.onDestroy();
+        ClientManager.getClient().stopSearch();
     }
 }

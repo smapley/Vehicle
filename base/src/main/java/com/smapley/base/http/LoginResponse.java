@@ -8,7 +8,6 @@ package com.smapley.base.http;
 public class LoginResponse {
 
     private String ukey;
-    private String ucid;
 
     public String getUkey() {
         return ukey;
@@ -18,11 +17,4 @@ public class LoginResponse {
         this.ukey = ukey;
     }
 
-    public String getUcid() {
-        return ucid;
-    }
-
-    public void setUcid(String ucid) {
-        this.ucid = ucid;
-    }
 }

@@ -1,4 +1,4 @@
-package com.smapley.vehicle.pay;
+package com.smapley.base.alipay;
 
 import org.apache.commons.lang3.StringUtils;
 

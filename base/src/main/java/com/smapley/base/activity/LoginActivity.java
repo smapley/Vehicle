@@ -3,6 +3,7 @@ package com.smapley.base.activity;
 import android.Manifest;
 import android.content.Intent;
 import android.text.InputType;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -39,13 +40,13 @@ public class LoginActivity extends BaseActivity implements LinearlayoutView.KeyB
 
     @Override
     public void initArgument() {
-        isExit = true;
 
     }
 
     @Override
     public void initView() {
         setContentView(R.layout.activity_login);
+
         layout = (LinearlayoutView) findViewById(R.id.login_layout);
         layout.setKeyBoardStateListener(this);
         logo = (ImageView) findViewById(R.id.login_logo);
@@ -61,7 +62,6 @@ public class LoginActivity extends BaseActivity implements LinearlayoutView.KeyB
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(LoginActivity.this, RegisterActivity.class));
-                finish();
             }
         });
         findViewById(R.id.login).setOnClickListener(new View.OnClickListener() {
@@ -80,6 +80,11 @@ public class LoginActivity extends BaseActivity implements LinearlayoutView.KeyB
         });
     }
 
+    @Override
+    protected void onBackClick() {
+        SP.saveSet(BaseConstant.SP_PAGETOGO, BaseConstant.PAGE_MAIN);
+        ActivityStack.getInstance().finishActivityButMain();
+    }
 
     private void doLogin() {
         if (checkForm()) {
@@ -127,5 +132,14 @@ public class LoginActivity extends BaseActivity implements LinearlayoutView.KeyB
                 logo.setVisibility(View.GONE);
                 break;
         }
+    }
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
+            SP.saveSet(BaseConstant.SP_PAGETOGO, BaseConstant.PAGE_MAIN);
+            ActivityStack.getInstance().finishActivityButMain();
+        }
+        return false;
     }
 }

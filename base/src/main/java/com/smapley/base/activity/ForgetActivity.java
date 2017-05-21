@@ -1,5 +1,6 @@
 package com.smapley.base.activity;
 
+import android.support.v4.content.ContextCompat;
 import android.text.InputType;
 import android.view.View;
 import android.widget.EditText;
@@ -48,8 +49,6 @@ public class ForgetActivity extends BaseActivity implements LinearlayoutView.Key
     @Override
     public void initView() {
         setContentView(R.layout.activity_forget);
-        showBack();
-        setTitle(R.string.forget);
         layout = (LinearlayoutView)findViewById(R.id.forget_layout);
         layout.setKeyBoardStateListener(this);
         titleView =findViewById(R.id.forget_title);
@@ -92,9 +91,11 @@ public class ForgetActivity extends BaseActivity implements LinearlayoutView.Key
                         if (number == 0) {
                             isSendCode = false;
                             ((TextView) view).setText(R.string.register_getCode);
+                            ((TextView) view).setTextColor(ContextCompat.getColor(ForgetActivity.this,R.color.cyan4));
                         } else {
                             isSendCode = true;
                             ((TextView) view).setText(number + "s");
+                            ((TextView) view).setTextColor(ContextCompat.getColor(ForgetActivity.this,R.color.gray6));
                         }
                     }
                 });
@@ -104,6 +105,7 @@ public class ForgetActivity extends BaseActivity implements LinearlayoutView.Key
     }
 
     private void sendCode() {
+        codeET.requestFocus();
         RequestParams params = new RequestParams(BaseConstant.URL_GETCODE);
         params.addBodyParameter("user", phone);
         x.http().post(params, new BaseCallback<LoginResponse>() {

@@ -1,6 +1,7 @@
 package com.smapley.base.activity;
 
 import android.content.Intent;
+import android.support.v4.content.ContextCompat;
 import android.text.InputType;
 import android.view.View;
 import android.view.WindowManager;
@@ -46,7 +47,6 @@ public class RegisterActivity extends BaseActivity implements LinearlayoutView.K
 
     @Override
     public void initArgument() {
-        isExit = true;
     }
 
     @Override
@@ -73,7 +73,6 @@ public class RegisterActivity extends BaseActivity implements LinearlayoutView.K
         findViewById(R.id.register_login).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(RegisterActivity.this, LoginActivity.class));
                 finish();
             }
         });
@@ -101,9 +100,11 @@ public class RegisterActivity extends BaseActivity implements LinearlayoutView.K
                         if (number == 0) {
                             isSendCode = false;
                             ((TextView) view).setText(R.string.register_getCode);
+                            ((TextView) view).setTextColor(ContextCompat.getColor(RegisterActivity.this,R.color.cyan4));
                         } else {
                             isSendCode = true;
                             ((TextView) view).setText(number + "s");
+                            ((TextView) view).setTextColor(ContextCompat.getColor(RegisterActivity.this,R.color.gray6));
                         }
                     }
                 });
@@ -113,6 +114,7 @@ public class RegisterActivity extends BaseActivity implements LinearlayoutView.K
     }
 
     private void sendCode() {
+        codeET.requestFocus();
         RequestParams params = new RequestParams(BaseConstant.URL_GETCODE);
         params.addBodyParameter("user", phone);
         x.http().post(params, new BaseCallback<LoginResponse>() {

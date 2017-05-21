@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
+    android:background="@mipmap/forget_bg"
     android:clipToPadding="true"
     android:fitsSystemWindows="true"
     android:orientation="vertical">
+
 
     <com.smapley.base.widget.LinearlayoutView
         android:id="@+id/forget_layout"
@@ -13,122 +15,115 @@
         android:orientation="vertical">
 
 
-        <LinearLayout
+        <TextView
+            android:id="@+id/forget_title"
+            android:layout_width="match_parent"
+            android:layout_height="180dp" />
+
+        <ScrollView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@mipmap/forget_bg"
-            android:gravity="center_horizontal"
-            android:orientation="vertical">
+            android:scrollbars="none">
 
-            <include layout="@layout/actionbar" />
-
-            <TextView
-                android:id="@+id/forget_title"
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="120dp" />
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="20dp"
+                android:background="@mipmap/login_form_bg"
+                android:orientation="vertical"
+                android:padding="20dp">
 
 
-        </LinearLayout>
+                <LinearLayout style="@style/forget_item_layout">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="30dp"
-            android:layout_marginRight="30dp"
-            android:layout_marginTop="@dimen/login_age"
-            android:gravity="center_horizontal"
-            android:orientation="vertical">
+                    <ImageView
+                        android:layout_width="@dimen/login_icon"
+                        android:layout_height="@dimen/login_icon"
+                        android:src="@mipmap/login_phone" />
+
+                    <ImageView
+                        android:layout_width="30dp"
+                        android:layout_height="@dimen/login_icon"
+                        android:src="@mipmap/icon_line_vertical" />
+
+                    <EditText
+                        android:id="@+id/forget_phone"
+                        style="@style/forget_edit"
+                        android:hint="@string/login_phone"
+                        android:inputType="phone" />
+
+                </LinearLayout>
+
+                <LinearLayout style="@style/forget_item_layout">
+
+                    <ImageView
+                        android:layout_width="@dimen/login_icon"
+                        android:layout_height="@dimen/login_icon"
+                        android:src="@mipmap/register_code" />
+
+                    <ImageView
+                        android:layout_width="30dp"
+                        android:layout_height="@dimen/login_icon"
+                        android:src="@mipmap/icon_line_vertical" />
+
+                    <EditText
+                        android:id="@+id/forget_code"
+                        style="@style/forget_edit"
+                        android:hint="@string/register_code"
+                        android:inputType="number" />
+
+                    <TextView
+                        android:id="@+id/forget_getCode"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="@string/register_getCode"
+                        android:textColor="@color/cyan4"
+                        android:textSize="@dimen/login_text" />
+                </LinearLayout>
 
 
-            <LinearLayout style="@style/forget_item_layout">
+                <LinearLayout style="@style/forget_item_layout">
 
-                <ImageView
-                    android:layout_width="@dimen/login_icon"
-                    android:layout_height="@dimen/login_icon"
-                    android:src="@mipmap/login_phone" />
+                    <ImageView
+                        android:layout_width="@dimen/login_icon"
+                        android:layout_height="@dimen/login_icon"
+                        android:src="@mipmap/forget_pass" />
 
-                <ImageView
-                    android:layout_width="30dp"
-                    android:layout_height="@dimen/login_icon"
-                    android:src="@mipmap/icon_line_vertical" />
+                    <ImageView
+                        android:layout_width="30dp"
+                        android:layout_height="@dimen/login_icon"
+                        android:src="@mipmap/icon_line_vertical" />
 
-                <EditText
-                    android:id="@+id/forget_phone"
-                    style="@style/forget_edit"
-                    android:hint="@string/login_phone"
-                    android:inputType="phone" />
+                    <EditText
+                        android:id="@+id/forget_password"
+                        style="@style/forget_edit"
+                        android:hint="@string/forget_pass"
+                        android:inputType="textPassword" />
 
-            </LinearLayout>
+                    <ImageView
+                        android:id="@+id/forget_show"
+                        android:layout_width="@dimen/login_icon"
+                        android:layout_height="@dimen/login_icon"
+                        android:src="@mipmap/forget_pass_close" />
+                </LinearLayout>
 
-            <LinearLayout style="@style/forget_item_layout">
 
-                <ImageView
-                    android:layout_width="@dimen/login_icon"
-                    android:layout_height="@dimen/login_icon"
-                    android:src="@mipmap/register_code" />
-
-                <ImageView
-                    android:layout_width="30dp"
-                    android:layout_height="@dimen/login_icon"
-                    android:src="@mipmap/icon_line_vertical" />
-
-                <EditText
-                    android:id="@+id/forget_code"
-                    style="@style/forget_edit"
-                    android:hint="@string/register_code"
-                    android:inputType="number" />
-
-                <TextView
-                    android:id="@+id/forget_getCode"
-                    android:layout_width="100dp"
-                    android:layout_height="wrap_content"
-                    android:background="@mipmap/forget_code_bg"
-                    android:gravity="center"
-                    android:padding="10dp"
-                    android:text="@string/register_getCode"
-                    android:textColor="@color/gray5"
+                <Button
+                    android:id="@+id/forget"
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:layout_marginBottom="20dp"
+                    android:layout_marginTop="@dimen/login_space"
+                    android:background="@mipmap/login_bt_bg"
+                    android:text="@string/commit"
+                    android:textColor="@color/white"
                     android:textSize="@dimen/login_text" />
             </LinearLayout>
+        </ScrollView>
 
-
-            <LinearLayout style="@style/forget_item_layout">
-
-                <ImageView
-                    android:layout_width="@dimen/login_icon"
-                    android:layout_height="@dimen/login_icon"
-                    android:src="@mipmap/forget_pass" />
-
-                <ImageView
-                    android:layout_width="30dp"
-                    android:layout_height="@dimen/login_icon"
-                    android:src="@mipmap/icon_line_vertical" />
-
-                <EditText
-                    android:id="@+id/forget_password"
-                    style="@style/forget_edit"
-                    android:hint="@string/forget_pass"
-                    android:inputType="textPassword" />
-
-                <ImageView
-                    android:id="@+id/forget_show"
-                    android:layout_width="@dimen/login_icon"
-                    android:layout_height="@dimen/login_icon"
-                    android:src="@mipmap/forget_pass_close" />
-            </LinearLayout>
-
-
-            <Button
-                android:id="@+id/forget"
-                android:layout_width="match_parent"
-                android:layout_height="45dp"
-                android:layout_marginBottom="60dp"
-                android:layout_marginTop="@dimen/login_space"
-                android:background="@mipmap/login_bt_bg"
-                android:text="@string/commit"
-                android:textColor="@color/white"
-                android:textSize="@dimen/login_text" />
-
-        </LinearLayout>
     </com.smapley.base.widget.LinearlayoutView>
 
 </LinearLayout>

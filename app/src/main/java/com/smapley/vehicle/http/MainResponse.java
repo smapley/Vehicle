@@ -10,6 +10,7 @@ public class MainResponse {
 
     private String sygold;
     private List lsfkdx;
+    private String pic;
 
     public String getSygold() {
         return sygold;
@@ -25,5 +26,13 @@ public class MainResponse {
 
     public void setLsfkdx(List lsfkdx) {
         this.lsfkdx = lsfkdx;
+    }
+
+    public String getPic() {
+        return pic;
+    }
+
+    public void setPic(String pic) {
+        this.pic = pic;
     }
 }

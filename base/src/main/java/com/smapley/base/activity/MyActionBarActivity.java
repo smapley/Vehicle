@@ -47,10 +47,14 @@ public class MyActionBarActivity extends AppCompatActivity {
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                finish();
+                onBackClick();
             }
         });
 
+    }
+
+    protected void onBackClick(){
+        finish();
     }
 
     protected void showRightText(int text){

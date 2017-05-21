@@ -10,13 +10,20 @@ public class BaseConstant {
     public static final int PAGE_MAIN = 0;
     public static final int PAGE_LOGIN = 1;
 
-
     protected static final String URL_BASE = "http://119.23.151.61/newera/";
-
+    public static final String URL_IMG = URL_BASE + "upload/";
     public static final String URL_LOGIN = URL_BASE + "addReg.php";
     public static final String URL_REGISTER = URL_BASE + "addZhuce.php";
     public static final String URL_FORGET = URL_BASE + "updateReg.php";
     public static final String URL_GETCODE = URL_BASE + "addSMS.php";
+
+
+    public static final int ALIPAY = 1;
+    public static final int WECHATPAY = 2;
+
+    public static final String URL_ADDGOLD = URL_BASE + "addGold.php";
+    public static final String URL_ALIPAYORDER = URL_BASE + "addChongzhi.php";
+    public static final String URL_WECHATPAYORDER = URL_BASE + "addZF.php";
 
 
     public static final String SP_USER = "user";

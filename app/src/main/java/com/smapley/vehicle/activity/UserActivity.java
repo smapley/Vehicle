@@ -1,5 +1,6 @@
 package com.smapley.vehicle.activity;
 
+import android.content.Intent;
 import android.view.View;
 import android.widget.TextView;
 
@@ -35,11 +36,14 @@ public class UserActivity extends BaseActivity {
         showBack();
     }
 
-    @Event({R.id.user_logout})
+    @Event({R.id.user_logout, R.id.user_set})
     private void onClick(View view) {
         switch (view.getId()) {
             case R.id.user_logout:
                 BaseApplication.getInstance().loginOut();
+                break;
+            case R.id.user_set:
+                startActivity(new Intent(UserActivity.this, SetActivity.class));
                 break;
         }
     }

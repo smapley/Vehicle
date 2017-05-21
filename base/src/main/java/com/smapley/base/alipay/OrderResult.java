@@ -1,10 +1,10 @@
-package com.smapley.vehicle.http;
+package com.smapley.base.alipay;
 
 /**
  * Created by wuzhixiong on 2017/5/7.
  */
 
-public class Order {
+public class OrderResult {
 
     private String dingdan;
 

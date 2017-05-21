@@ -2,168 +2,178 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/black"
+    android:clipToPadding="true"
+    android:fitsSystemWindows="true"
     android:orientation="vertical">
-
-
-        <include layout="@layout/actionbar" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="20dp"
-        android:text="@string/recharge_chose"
-        android:textColor="@color/black"/>
-
-
-    <TableLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="10dp"
-        android:layout_marginStart="10dp">
-
-        <TableRow style="@style/recharge_item_layout">
-
-            <TextView
-                android:id="@+id/charge_item1"
-                style="@style/recharge_item"
-                android:background="@mipmap/recharge_tv_pre"
-                android:text="10元"
-                android:textColor="@color/white"/>
-
-            <TextView
-                android:id="@+id/charge_item2"
-                style="@style/recharge_item"
-                android:text="20元" />
-
-            <TextView
-                android:id="@+id/charge_item3"
-                style="@style/recharge_item"
-                android:text="30元" />
-        </TableRow>
-
-        <TableRow style="@style/recharge_item_layout">
-
-            <TextView
-                android:id="@+id/charge_item4"
-                style="@style/recharge_item"
-                android:text="50元" />
-
-            <TextView
-                android:id="@+id/charge_item5"
-                style="@style/recharge_item"
-                android:text="100元" />
-
-            <TextView
-                android:id="@+id/charge_item6"
-                style="@style/recharge_item"
-                android:text="150元" />
-        </TableRow>
-
-    </TableLayout>
-
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:background="@color/white"
-        android:orientation="vertical"
-        android:padding="20dp">
+        android:layout_height="match_parent"
+        android:background="@color/gray1"
+        android:orientation="vertical">
+
+        <include layout="@layout/actionbar" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/recharge_money"
+            android:layout_margin="20dp"
+            android:text="@string/recharge_chose"
             android:textColor="@color/black" />
+
+
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="10dp"
+            android:layout_marginStart="10dp">
+
+            <TableRow style="@style/recharge_item_layout">
+
+                <TextView
+                    android:id="@+id/charge_item1"
+                    style="@style/recharge_item"
+                    android:background="@mipmap/recharge_tv_pre"
+                    android:text="10元"
+                    android:textColor="@color/white" />
+
+                <TextView
+                    android:id="@+id/charge_item2"
+                    style="@style/recharge_item"
+                    android:text="20元" />
+
+                <TextView
+                    android:id="@+id/charge_item3"
+                    style="@style/recharge_item"
+                    android:text="30元" />
+            </TableRow>
+
+            <TableRow style="@style/recharge_item_layout">
+
+                <TextView
+                    android:id="@+id/charge_item4"
+                    style="@style/recharge_item"
+                    android:text="50元" />
+
+                <TextView
+                    android:id="@+id/charge_item5"
+                    style="@style/recharge_item"
+                    android:text="100元" />
+
+                <TextView
+                    android:id="@+id/charge_item6"
+                    style="@style/recharge_item"
+                    android:text="150元" />
+            </TableRow>
+
+        </TableLayout>
+
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="45dp"
-            android:layout_marginTop="20dp"
-            android:background="@mipmap/recharge_et_bg"
-            android:gravity="center_vertical"
-            android:orientation="horizontal">
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:background="@color/white"
+            android:orientation="vertical"
+            android:padding="20dp">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
-                android:text="@string/withdraw_jine"
+                android:text="@string/recharge_money"
                 android:textColor="@color/black" />
 
-            <ImageView
-                android:layout_width="10dp"
-                android:layout_height="30dp"
-                android:layout_marginEnd="10dp"
-                android:layout_marginStart="10dp"
-                android:src="@mipmap/icon_line_vertical" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_marginTop="20dp"
+                android:background="@mipmap/recharge_et_bg"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
 
-            <EditText
-                android:id="@+id/charge_num"
-                android:layout_width="200dp"
-                android:layout_height="wrap_content"
-                android:background="@null"
-                android:inputType="numberDecimal"
-                android:maxLines="1"
-                android:text="10"
-                android:hint="@string/recharge_input_jine"
-                android:textColor="@color/black"
-                android:textSize="15sp" />
-        </LinearLayout>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:text="@string/withdraw_jine"
+                    android:textColor="@color/black" />
 
-    </LinearLayout>
+                <ImageView
+                    android:layout_width="10dp"
+                    android:layout_height="30dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginStart="10dp"
+                    android:src="@mipmap/icon_line_vertical" />
 
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="45dp"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="15dp"
-        android:orientation="horizontal">
+                <EditText
+                    android:id="@+id/charge_num"
+                    android:layout_width="200dp"
+                    android:layout_height="wrap_content"
+                    android:background="@null"
+                    android:hint="@string/recharge_input_jine"
+                    android:inputType="numberDecimal"
+                    android:maxLines="1"
+                    android:text="10"
+                    android:textColor="@color/black"
+                    android:textSize="15sp" />
+            </LinearLayout>
 
-        <LinearLayout
-            android:id="@+id/charge_zhifubao"
-            android:layout_width="160dp"
-            android:layout_height="match_parent"
-            android:layout_marginEnd="15dp"
-            android:background="@mipmap/zfbdise"
-            android:gravity="center"
-            android:orientation="horizontal">
-
-            <ImageView
-                android:layout_width="25dp"
-                android:layout_height="25dp"
-                android:layout_marginEnd="5dp"
-                android:src="@mipmap/icon_zhifubao" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/withdraw_alipay"
-                android:textColor="@color/white"
-                android:textSize="17sp" />
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/charge_weixin"
-            android:layout_width="160dp"
-            android:layout_height="match_parent"
-            android:layout_marginStart="15dp"
-            android:background="@mipmap/wecahtdise"
-            android:gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="45dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="15dp"
             android:orientation="horizontal">
 
-            <ImageView
-                android:layout_width="25dp"
-                android:layout_height="25dp"
-                android:layout_marginEnd="5dp"
-                android:src="@mipmap/icon_weixin" />
+            <LinearLayout
+                android:id="@+id/charge_zhifubao"
+                android:layout_width="160dp"
+                android:layout_height="match_parent"
+                android:layout_marginEnd="15dp"
+                android:background="@mipmap/zfbdise"
+                android:gravity="center"
+                android:orientation="horizontal">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/withdraw_wecharpay"
-                android:textColor="@color/white"
-                android:textSize="17sp" />
+                <ImageView
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_marginEnd="5dp"
+                    android:src="@mipmap/icon_zhifubao" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/withdraw_alipay"
+                    android:textColor="@color/white"
+                    android:textSize="17sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/charge_weixin"
+                android:layout_width="160dp"
+                android:layout_height="match_parent"
+                android:layout_marginStart="15dp"
+                android:background="@mipmap/wecahtdise"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_marginEnd="5dp"
+                    android:src="@mipmap/icon_weixin" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/withdraw_wecharpay"
+                    android:textColor="@color/white"
+                    android:textSize="17sp" />
+            </LinearLayout>
+
         </LinearLayout>
 
     </LinearLayout>

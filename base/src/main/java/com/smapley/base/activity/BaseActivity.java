@@ -7,14 +7,19 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AlertDialog;
 import android.view.KeyEvent;
 import android.view.WindowManager;
+import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.smapley.base.R;
 import com.smapley.base.application.BaseApplication;
 import com.smapley.base.utils.ActivityStack;
 import com.smapley.base.utils.BaseConstant;
 import com.smapley.base.utils.SP;
+import com.smapley.base.widget.CircleImageView;
 import com.tbruyelle.rxpermissions2.RxPermissions;
 
+import org.xutils.common.util.DensityUtil;
+import org.xutils.image.ImageOptions;
 import org.xutils.x;
 
 /**
@@ -27,17 +32,32 @@ public abstract class BaseActivity extends MyActionBarActivity {
     protected boolean isExit = false;
 
     protected RxPermissions rxPermissions;
+    protected ImageOptions circleImage;
 
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         ActivityStack.getInstance().addActivity(this);
-        x.view().inject(this);
+        initXUtils();
         rxPermissions = new RxPermissions(this);
         initState();
         initView();
 
+    }
+
+    private void initXUtils() {
+        x.view().inject(this);
+
+        circleImage = new ImageOptions.Builder()
+                .setSize(DensityUtil.dip2px(120), DensityUtil.dip2px(120))
+                .setRadius(DensityUtil.dip2px(60))
+                // 如果ImageView的大小不是定义为wrap_content, 不要crop.
+                .setCrop(true) // 很多时候设置了合适的scaleType也不需要它.
+                // 加载中或错误图片的ScaleType
+                //.setPlaceholderScaleType(ImageView.ScaleType.MATRIX)
+                .setImageScaleType(ImageView.ScaleType.CENTER_CROP)
+                .build();
     }
 
 
@@ -109,9 +129,15 @@ public abstract class BaseActivity extends MyActionBarActivity {
         protected abstract void onNetural(DialogInterface dialog, int which);
     }
 
+    protected boolean onBack(int keyCode, KeyEvent event) {
+        super.onKeyDown(keyCode, event);
+        return true;
+    }
+
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         if (isExit) {
+
             if (keyCode == KeyEvent.KEYCODE_BACK) {
                 showDialog("确定要退出吗？", new DialogListener() {
                     @Override
@@ -123,8 +149,7 @@ public abstract class BaseActivity extends MyActionBarActivity {
             }
             return false;
         } else {
-            super.onKeyDown(keyCode, event);
-            return true;
+            return onBack(keyCode, event);
         }
     }
 
