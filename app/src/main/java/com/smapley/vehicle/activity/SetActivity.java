@@ -1,28 +1,25 @@
 package com.smapley.vehicle.activity;
 
+import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.net.Uri;
 import android.view.KeyEvent;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 
 import com.smapley.base.activity.BaseActivity;
 import com.smapley.base.http.BaseCallback;
 import com.smapley.base.utils.SP;
-import com.smapley.base.widget.CircleImageView;
 import com.smapley.vehicle.R;
 import com.smapley.vehicle.http.Set;
 import com.smapley.vehicle.utils.Constant;
 import com.smapley.vehicle.utils.LicenseKeyboardUtil;
-import com.tencent.mm.opensdk.modelmsg.SendMessageToWX;
+import com.yalantis.ucrop.UCrop;
 
-import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.lang3.StringUtils;
-import org.xutils.common.util.DensityUtil;
 import org.xutils.http.RequestParams;
-import org.xutils.image.ImageOptions;
 import org.xutils.view.annotation.ContentView;
 import org.xutils.view.annotation.Event;
 import org.xutils.view.annotation.ViewInject;
@@ -32,14 +29,16 @@ import java.io.File;
 import java.util.List;
 import java.util.Map;
 
+import me.nereo.multi_image_selector.MultiImageSelector;
 import me.nereo.multi_image_selector.MultiImageSelectorActivity;
-import me.nereo.multi_image_selector.bean.Image;
+
+import static android.R.attr.maxHeight;
+import static android.R.attr.maxWidth;
 
 /**
  * Created by wuzhixiong on 2017/5/20.
  */
-@ContentView(R.layout.activity_set
-)
+@ContentView(R.layout.activity_set)
 public class SetActivity extends BaseActivity {
 
     @ViewInject(R.id.set_cp1)
@@ -74,7 +73,8 @@ public class SetActivity extends BaseActivity {
             @Override
             public void success(Set result) {
                 keyboardUtil.setData(result.getCp());
-                x.image().bind(image, Constant.URL_IMG + result.getPic(), circleImage);
+                if (StringUtils.isNoneEmpty(result.getPic()))
+                    x.image().bind(image, Constant.URL_IMG + result.getPic(), circleImage);
             }
         });
     }
@@ -124,13 +124,17 @@ public class SetActivity extends BaseActivity {
 
     private void updatePic(File file) {
         if (file != null) {
+            ProgressDialog dialog = new ProgressDialog(this);
+            dialog.setMessage("正在上传照片。。。");
             RequestParams params = new RequestParams(Constant.URL_ADDPHOTO);
             params.addBodyParameter("ukey", (String) SP.getUser("ukey"));
             params.addBodyParameter("name", file);
-            x.http().post(params, new BaseCallback<Map>() {
+            dialog.show();
+            x.http().post(params, new BaseCallback<Map>(dialog) {
                 @Override
                 public void success(Map result) {
-                    x.image().bind(image, Constant.URL_IMG + result.get("filename"), circleImage);
+                    if (StringUtils.isNoneEmpty(result.get("filename").toString()))
+                        x.image().bind(image, Constant.URL_IMG + result.get("filename"), circleImage);
                 }
             });
         }
@@ -141,36 +145,43 @@ public class SetActivity extends BaseActivity {
      * 从相册选择头像
      */
     private void selectPic() {
-        int selectedMode = MultiImageSelectorActivity.MODE_SINGLE;
-        boolean showCamera = true;
-        int maxNum = 1;
-        Intent intent = new Intent(SetActivity.this, MultiImageSelectorActivity.class);
-        // 是否显示拍摄图片
-        intent.putExtra(MultiImageSelectorActivity.EXTRA_SHOW_CAMERA, showCamera);
-        // 最大可选择图片数量
-        intent.putExtra(MultiImageSelectorActivity.EXTRA_SELECT_COUNT, maxNum);
-        // 选择模式
-        intent.putExtra(MultiImageSelectorActivity.EXTRA_SELECT_MODE, selectedMode);
-        // 默认选择
-//                if (mSelectPath != null && mSelectPath.size() > 0) {
-//                    intent.putExtra(MultiImageSelectorActivity.EXTRA_DEFAULT_SELECTED_LIST, mSelectPath);
-//                }
-        startActivityForResult(intent, 0);
+        MultiImageSelector.create()
+                .showCamera(true) // 是否显示相机. 默认为显示
+                .single() // 单选模式
+                .start(this, 0);
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         try {
-            if (resultCode == RESULT_OK && requestCode == 0) {
-                List<String> resultList = data.getStringArrayListExtra(MultiImageSelectorActivity.EXTRA_RESULT);
-                File file = new File(resultList.get(0));
-                updatePic(file);
+            if (resultCode == RESULT_OK) {
+                switch (requestCode) {
+                    case 0:
+                        List<String> resultList = data.getStringArrayListExtra(MultiImageSelectorActivity.EXTRA_RESULT);
+                        //裁剪图片
+                        Uri sourceUri = Uri.fromFile(new File(resultList.get(0)));
+                        Uri destinationUri = Uri.fromFile(new File(getCacheDir(), "SampleCropImage.jpeg"));
+                        UCrop.of(sourceUri, destinationUri)
+                                .withAspectRatio(1, 1)
+                                .withMaxResultSize(maxWidth, maxHeight)
+                                .start(SetActivity.this);
+                        break;
+                    case UCrop.REQUEST_CROP:
+                        //上传图片
+                        final Uri resultUri = UCrop.getOutput(data);
+                        File file = new File(resultUri.getPath());
+                        updatePic(file);
+                        break;
+                }
+
+
             }
         } catch (Exception e) {
 
         }
     }
+
 
     @Override
     protected boolean onBack(int keyCode, KeyEvent event) {

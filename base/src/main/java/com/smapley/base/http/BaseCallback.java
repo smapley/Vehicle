@@ -1,5 +1,6 @@
 package com.smapley.base.http;
 
+import android.app.Dialog;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -17,10 +18,20 @@ import java.lang.reflect.Type;
 /**
  * Created by wuzhixiong on 2017/4/29.
  */
-public abstract class
-BaseCallback<T> implements Callback.CommonCallback<String>, ParameterizedType {
+public abstract class BaseCallback<T> implements Callback.CommonCallback<String>, ParameterizedType {
+
+    private Dialog dialog;
+
+    public BaseCallback() {
+        this.dialog = null;
+    }
+
+    public BaseCallback(Dialog dialog) {
+        this.dialog = dialog;
+    }
 
     public void onSuccess(String result) {
+        hideDialog();
         Log.d("http", result);
         if (!StringUtils.isEmpty(result)) {
             BaseResponse<T> response = deal(result);
@@ -37,15 +48,23 @@ BaseCallback<T> implements Callback.CommonCallback<String>, ParameterizedType {
     }
 
     public void onError(Throwable ex, boolean isOnCallback) {
+        hideDialog();
         Toast.makeText(x.app(), ex.getMessage(), Toast.LENGTH_SHORT).show();
     }
 
     public void onCancelled(CancelledException cex) {
+        hideDialog();
         Toast.makeText(x.app(), "Cancelled", Toast.LENGTH_SHORT).show();
     }
 
     public void onFinished() {
+        hideDialog();
+    }
 
+    private void hideDialog() {
+        if (dialog != null) {
+            dialog.dismiss();
+        }
     }
 
     public abstract void success(T result);

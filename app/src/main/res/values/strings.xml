@@ -40,11 +40,13 @@
     <string name="pay_sj">请选择商家</string>
     <string name="pay_number">请输入支付金额</string>
     <string name="main_no_message">抱歉，您周边没有商家。</string>
-    <string name="main_openBle">请开启设备蓝牙功能</string>
+    <string name="main_openBle_file">蓝牙功能开启失败！</string>
+    <string name="main_openBle_success">正在打开设备蓝牙功能！</string>
     <string name="set_cp">车牌</string>
     <string name="set__alipay">支付宝免密支付</string>
     <string name="set_bind">立即绑定</string>
     <string name="set_right_cp">请输入正确的车牌</string>
     <string name="set_cp_success">车牌设置成功！</string>
+    <string name="main_search">正在查找。。。</string>
 
 </resources>

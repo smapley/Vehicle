@@ -21,6 +21,13 @@ android {
         targetCompatibility 1.8
         sourceCompatibility 1.8
     }
+    allprojects {
+        repositories {
+            jcenter()
+            maven { url "https://jitpack.io" }
+        }
+    }
+
 }
 
 
@@ -43,7 +50,13 @@ dependencies {
     //BLE
     compile 'com.inuker.bluetooth:library:1.4.0'
     //微信支付
-    compile 'com.tencent.mm.opensdk:wechat-sdk-android-with-mta:+'
+    compile 'com.tencent.mm.opensdk:wechat-sdk-android-with-mta:1.1.6'
+    //图片选择
+    compile 'com.github.lovetuzitong:MultiImageSelector:1.2'
+    //图片裁剪
+    compile 'com.github.yalantis:ucrop:2.2.1'
+    //高德定位
+    compile 'com.amap.api:location:latest.integration'
+
     testCompile 'junit:junit:4.12'
-    compile project(':image-selector')
 }

@@ -18,5 +18,7 @@ public class Constant extends BaseConstant {
     public static final String URL_GETSHEZHI = URL_BASE + "getShezhi.php";
     public static final String URL_UPDATESHEZHI = URL_BASE + "updateShezhi.php";
     public static final String URL_ADDPHOTO = URL_BASE + "addPhoto.php";
+    public static final String URL_GETDW = URL_BASE + "getDW.php";
+    public static final String URL_GETSS = URL_BASE + "getSS.php";
 }
 

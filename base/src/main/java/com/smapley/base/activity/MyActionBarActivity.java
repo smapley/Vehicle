@@ -1,5 +1,7 @@
 package com.smapley.base.activity;
 
+import android.accessibilityservice.AccessibilityService;
+import android.content.Context;
 import android.media.Image;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.content.IntentCompat;
@@ -9,11 +11,15 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.smapley.base.R;
+
+import org.apache.commons.lang3.StringUtils;
 
 /**
  * Created by wuzhixiong on 2017/3/19.
@@ -25,9 +31,30 @@ public class MyActionBarActivity extends AppCompatActivity {
     private TextView tab1;
     private TextView tab2;
 
-    protected void showBg(){
+    protected void showBg() {
         View view = findViewById(R.id.action_bar_layout);
         view.setBackgroundResource(R.color.base);
+    }
+
+    protected void showSearch() {
+        View view = findViewById(R.id.tbar_search_layout);
+        view.setVisibility(View.VISIBLE);
+        EditText editText = (EditText) findViewById(R.id.tbar_search_text);
+        View search = findViewById(R.id.tbar_search);
+        search.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String data = editText.getText().toString();
+                if (StringUtils.isNoneEmpty(data)) {
+                    onSearch(data);
+                    InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+                    imm.hideSoftInputFromWindow(v.getWindowToken(), 0); //强制隐藏键盘
+                }
+            }
+        });
+    }
+
+    protected void onSearch(String data) {
     }
 
     public void setTitle(int title) {
@@ -35,7 +62,7 @@ public class MyActionBarActivity extends AppCompatActivity {
 
     }
 
-    public void setTitle(String title){
+    public void setTitle(String title) {
         TextView titleView = (TextView) findViewById(R.id.title);
         titleView.setText(title);
     }
@@ -53,12 +80,12 @@ public class MyActionBarActivity extends AppCompatActivity {
 
     }
 
-    protected void onBackClick(){
+    protected void onBackClick() {
         finish();
     }
 
-    protected void showRightText(int text){
-        TextView textView =(TextView)findViewById(R.id.right_text);
+    protected void showRightText(int text) {
+        TextView textView = (TextView) findViewById(R.id.right_text);
         textView.setText(getString(text));
         textView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -80,13 +107,14 @@ public class MyActionBarActivity extends AppCompatActivity {
         });
     }
 
-    protected void showCenterImg(Integer imgSrc){
-        ImageView imageView= (ImageView)findViewById(R.id.center_img);
+    protected void showCenterImg(Integer imgSrc) {
+        ImageView imageView = (ImageView) findViewById(R.id.center_img);
         imageView.setImageResource(imgSrc);
         imageView.setVisibility(View.VISIBLE);
     }
-    protected void showRightImg(Integer imgSrc){
-        ImageView imageView= (ImageView)findViewById(R.id.right_img);
+
+    protected void showRightImg(Integer imgSrc) {
+        ImageView imageView = (ImageView) findViewById(R.id.right_img);
         imageView.setImageResource(imgSrc);
         imageView.setVisibility(View.VISIBLE);
         imageView.setOnClickListener(new View.OnClickListener() {
@@ -97,9 +125,10 @@ public class MyActionBarActivity extends AppCompatActivity {
         });
     }
 
-    protected  void onRightText(View v){
+    protected void onRightText(View v) {
 
     }
+
     protected void onRightImg(View v) {
     }
 

@@ -1,6 +1,14 @@
 apply plugin: 'com.android.application'
 
 android {
+    signingConfigs {
+        key {
+            keyAlias 'key'
+            keyPassword 'wunai210'
+            storeFile file('/Users/wuzhixiong/Workspaces/android/KEY/Key.jks')
+            storePassword 'wunai210'
+        }
+    }
     compileSdkVersion 25
     buildToolsVersion "25.0.2"
     defaultConfig {
@@ -10,19 +18,30 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        //jdk版本
         jackOptions {
             enabled true
         }
     }
     buildTypes {
         release {
-            minifyEnabled false
+            minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
+    //jdk版本
     compileOptions {
         targetCompatibility 1.8
         sourceCompatibility 1.8
+    }
+
+    //图片裁剪相关注释
+    allprojects {
+        repositories {
+            jcenter()
+            maven { url "https://jitpack.io" }
+        }
     }
 }
 

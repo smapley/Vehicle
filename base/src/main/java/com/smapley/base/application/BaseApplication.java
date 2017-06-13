@@ -1,14 +1,25 @@
 package com.smapley.base.application;
 
 import android.app.Application;
+import android.content.Context;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
 import android.util.Log;
 
+import com.amap.api.location.AMapLocationClient;
+import com.amap.api.location.AMapLocationClientOption;
+import com.amap.api.location.AMapLocationListener;
+import com.smapley.base.location.Location;
 import com.smapley.base.utils.ActivityStack;
 import com.smapley.base.utils.BaseConstant;
 import com.smapley.base.utils.SP;
 
 import org.xutils.BuildConfig;
 import org.xutils.x;
+
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+import java.util.Locale;
 
 /**
  * Created by eric on 2017/3/13.
@@ -41,7 +52,7 @@ public class BaseApplication extends Application {
         SP.init(this);
 
         instance = this;
-        Log.d("-----------------", "application started");
+        Log.d("-----------------", "application started" + sHA1(this));
 
     }
 
@@ -53,4 +64,31 @@ public class BaseApplication extends Application {
         ActivityStack.getInstance().finishActivityButMain();
 
     }
+
+    public String sHA1(Context context) {
+        try {
+            PackageInfo info = context.getPackageManager().getPackageInfo(
+                    context.getPackageName(), PackageManager.GET_SIGNATURES);
+            byte[] cert = info.signatures[0].toByteArray();
+            MessageDigest md = MessageDigest.getInstance("SHA1");
+            byte[] publicKey = md.digest(cert);
+            StringBuffer hexString = new StringBuffer();
+            for (int i = 0; i < publicKey.length; i++) {
+                String appendString = Integer.toHexString(0xFF & publicKey[i])
+                        .toUpperCase(Locale.US);
+                if (appendString.length() == 1)
+                    hexString.append("0");
+                hexString.append(appendString);
+                hexString.append(":");
+            }
+            String result = hexString.toString();
+            return result.substring(0, result.length() - 1);
+        } catch (PackageManager.NameNotFoundException e) {
+            e.printStackTrace();
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
 }
